@@ -45,9 +45,7 @@ public class DNABarcodeGenerator {
 				}
 
 			
-			barcode = isRestrictedList(barcode);
-			barcode = validateGCCount(barcode);
-			barcode = isRedundantBarcode(barcode);
+			
 			
 			Sequence[i] = barcode;
 	
@@ -77,7 +75,7 @@ public class DNABarcodeGenerator {
 		}
 	 	
 	
-	 public static String validateGCCount(String barcode) {
+	 public static boolean validateGCCount(String barcode) {
 	// for every element in Sequence, count amount of A, C, T, G
 		
 		int GCount = 0;
@@ -115,7 +113,7 @@ public class DNABarcodeGenerator {
 	 
 	
 	
-	public static String isRedundantBarcode(String barcode) {
+	public static boolean isRedundantBarcode(String barcode) {
 		String[] RedundantBarcodes = {"AAA", "TTT", "CCC", "GGG",};
 		
 		if((barcode.contains(RedundantBarcodes[0]) || (barcode.contains(RedundantBarcodes[1]) || (barcode.contains(RedundantBarcodes[2]) || (barcode.contains(RedundantBarcodes[3])))))) {
